@@ -2,6 +2,13 @@
 Dynamic array implementation. Didn't test it enough
 
 I'm pretty there are cases where it doesn't work for example if you don't use primitive types for the array
+
+# How to use
+Just include the header file
+```c
+#include "m_arr.h"
+```
+
 # Usage
 ```c
 int *arr, a;
@@ -19,7 +26,23 @@ arr = arr_resize(35, arr);
 /* capacity of the array */
 arr = arr_reserve(70, arr);
 
-/* getting the size */
+/* getting the size, and capacity */
 arr_size(arr);
+arr_capacity(arr);
+
+/* joining two arrays */
+int *arr3 = arr_join(arr1, arr2); /* must be of the same type */
+
+/* appending two arrays */
+arr1 = arr_join(arr1, arr2);
+
+/* free an array */
+arr_free(arr1);
+
+/* delete an element (doesn't preserve order, but it's faster) */
+arr_fdelete(i, arr);
+
+/* delete an element and preserve order */
+arr_delete(i, arr);
 ```
 
