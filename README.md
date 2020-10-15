@@ -4,10 +4,19 @@ Dynamic array implementation. Didn't test it enough
 I'm pretty there are cases where it doesn't work for example if you don't use primitive types for the array
 
 # How to use
-Just include the header file
+Just include the header file.
 ```c
 #include "m_arr.h"
 ```
+
+It works with clang, haven't tested it with other compilers.
+
+It compiles fine with
+
+```bash
+clang -ansi -Wall -Wextra -Wshadow -Werror -pedantic -pedantic-errors test.c
+```
+
 
 # Usage
 ```c
