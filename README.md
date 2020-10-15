@@ -43,7 +43,7 @@ arr_capacity(arr);
 int *arr3 = arr_join(arr1, arr2); /* must be of the same type */
 
 /* appending two arrays */
-arr1 = arr_join(arr1, arr2);
+arr1 = arr_append(arr1, arr2);
 
 /* free an array */
 arr_free(arr1);
