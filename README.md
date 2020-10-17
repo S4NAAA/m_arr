@@ -1,7 +1,7 @@
 # m_arr
 Dynamic array implementation. Didn't test it enough
 
-I'm pretty there are cases where it doesn't work for example if you don't use primitive types for the array
+I'm pretty sure there are cases where it doesn't work for example if you don't use primitive types for the array
 
 # How to use
 Just include the header file.
