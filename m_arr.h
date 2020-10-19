@@ -44,16 +44,7 @@ extern "C" {
   } while (0)
 
 #define arr_join(a1, a2) (m_arr_join((void *)a1, (void *)a2))
-#define arr_append(a1, a2) (a1 = m_arr_append((void *)a1, (void *)a2))
-
-/*
-#define arr_print( t, a )                                                   \
-    {                                                                       \
-        unsigned int i;                                                     \
-        for( i = 0; i < arr_size( a ); ++i )                                \
-            printf( t, a[ i ] );                                            \
-    }
-*/
+#define arr_append(a1, a2) (m_arr_append((void *)a1, (void *)a2))
 
 struct m_arr_header {
   unsigned int type_size;
