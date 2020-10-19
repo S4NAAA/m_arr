@@ -71,4 +71,9 @@ int main(void) {
       printf("%d\t", m[i][j]);
     printf("\n");
   }
+
+  for (i = 0; i < arr_size(m); ++i)
+    arr_free(m[i]);
+
+  arr_free(m);
 }
