@@ -70,19 +70,20 @@ void *m_arr_create(unsigned int type_size, unsigned int size) {
 
 void *m_arr_resize(void *arr, unsigned int new_size) {
   unsigned int new_capacity;
-  struct m_arr_header *data, *tmp;
+  struct m_arr_header *data;
+
+  if (arr == NULL) return NULL;
 
   data = arr_header(arr);
 
   if (new_size < data->capacity) goto set_size;
 
   new_capacity = (new_size / 16 + 1) * 16;
-  tmp = realloc(data,
+  data = realloc(data,
                 sizeof(struct m_arr_header) + data->type_size * new_capacity);
 
-  if (tmp == NULL) return NULL;
+  if (data == NULL) return NULL;
 
-  data = tmp;
   data->capacity = new_capacity;
 set_size:
   data->size = new_size;
@@ -91,17 +92,16 @@ set_size:
 }
 
 void *m_arr_reserve(void *arr, unsigned int new_capacity) {
-  struct m_arr_header *data, *tmp;
+  struct m_arr_header *data;
 
   if (arr == NULL) return NULL;
 
   data = arr_header(arr);
-  tmp = realloc(data,
+  data = realloc(data,
                 sizeof(struct m_arr_header) + data->type_size * new_capacity);
 
-  if (tmp == NULL) return NULL;
+  if (data == NULL) return NULL;
 
-  data = tmp;
   data->capacity = new_capacity;
   if (data->size > data->capacity) data->size = data->capacity;
 
@@ -127,9 +127,11 @@ void *m_arr_join(void *arr1, void *arr2) {
 
   if (tmp == NULL) goto end;
 
-  s1 = arr_type_size(tmp) * arr_size(tmp);
+  s1 = arr_type_size(tmp) * arr_size(arr1);
+  
   memcpy(tmp, arr1, s1);
   memcpy(tmp + s1, arr2, arr_type_size(tmp) * data2->size);
+
 end:
   return tmp;
 }
